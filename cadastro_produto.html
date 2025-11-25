@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cadastro de Produto e Categoria</title>
+  <link rel="icon" href="uploads/LogoFAV.png" type="image/png" />
+  <link rel="stylesheet" href="css/cadastro.css" />
+</head>
+<body>
+  <h1>Cadastro de Produto e Categoria</h1>
+
+  <!-- Mensagem de retorno -->
+  <p style="text-align:center; font-weight:bold;">✅ Produto cadastrado com sucesso!</p>
+
+  <!-- Cadastro de Categoria -->
+  <section class="form-section">
+    <h2>Cadastrar Nova Categoria</h2>
+    <form method="POST">
+      <input type="text" name="novaCategoria" placeholder="Nome da nova categoria" required />
+      <button type="submit">Cadastrar Categoria</button>
+    </form>
+  </section>
+
+  <!-- Atualizar ou Excluir Categoria -->
+  <section class="form-section">
+    <h2>Gerenciar Categorias</h2>
+    <form method="POST" style="display:flex; gap:10px; margin-bottom:10px;">
+      <input type="hidden" name="categoriaId" value="1" />
+      <input type="text" name="editarCategoria" value="Eletrônicos" />
+      <button type="submit">Atualizar</button>
+      <button type="submit" name="excluirCategoria" value="1" onclick="return confirm('Excluir esta categoria?')">Excluir</button>
+    </form>
+
+    <form method="POST" style="display:flex; gap:10px; margin-bottom:10px;">
+      <input type="hidden" name="categoriaId" value="2" />
+      <input type="text" name="editarCategoria" value="Roupas" />
+      <button type="submit">Atualizar</button>
+      <button type="submit" name="excluirCategoria" value="2" onclick="return confirm('Excluir esta categoria?')">Excluir</button>
+    </form>
+  </section>
+
+  <!-- Cadastro de Produto -->
+  <section class="form-section">
+    <h2>Cadastrar Produto</h2>
+    <form method="POST" enctype="multipart/form-data">
+      <input type="text" name="produtoNome" placeholder="Nome do produto" required />
+
+      <textarea name="produtoDescricao" placeholder="Descrição do produto" rows="4" required></textarea>
+
+      <label for="produtoAvaliacao">Avaliação (1 a 5 estrelas):</label>
+      <select name="produtoAvaliacao" id="produtoAvaliacao" required>
+        <option value="">Selecione</option>
+        <option value="1">★☆☆☆☆</option>
+        <option value="2">★★☆☆☆</option>
+        <option value="3">★★★☆☆</option>
+        <option value="4">★★★★☆</option>
+        <option value="5">★★★★★</option>
+      </select>
+
+      <input type="number" name="produtoPreco" placeholder="Preço" step="0.01" required />
+
+      <label for="produtoImagem">Imagem do produto:</label><br>
+      <input type="file" name="produtoImagem" id="produtoImagem" accept="image/*" onchange="mostrarPrevia()" required /><br><br>
+      <img id="preview" src="#" alt="Prévia da imagem" style="display:none; max-width:200px; border:1px solid #ccc; border-radius:6px; margin-bottom:15px;" />
+
+      <select name="produtoCategoria" required>
+        <option value="">Selecione uma categoria</option>
+        <option value="1">Eletrônicos</option>
+        <option value="2">Roupas</option>
+      </select>
+      <button type="submit">Cadastrar Produto</button>
+    </form>
+  </section>
+
+  <script>
+    function mostrarPrevia() {
+      const input = document.getElementById('produtoImagem');
+      const preview = document.getElementById('preview');
+
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          preview.src = e.target.result;
+          preview.style.display = 'block';
+        };
+        reader.readAsDataURL(input.files[0]);
+      } else {
+        preview.src = '#';
+        preview.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

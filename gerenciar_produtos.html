@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gerenciar Produtos</title>
+  <link rel="icon" href="uploads/LogoFAV.png" type="image/png" />
+  <link rel="stylesheet" href="css/gerenciar.css" />
+</head>
+<body>
+  <header>
+    <h1>Gerenciar Produtos</h1>
+    <p style="text-align:center; font-weight:bold;">✏️ Produto atualizado com sucesso!</p>
+  </header>
+
+  <!-- Filtros -->
+  <form class="filtro-form">
+    <input type="text" placeholder="Buscar por nome..." />
+    <select>
+      <option>Todas as categorias</option>
+      <option>Eletrônicos</option>
+      <option>Roupas</option>
+      <option>Livros</option>
+    </select>
+    <button type="submit">Filtrar</button>
+  </form>
+
+  <!-- Cards de produtos -->
+  <main class="gerenciar-linha">
+    <div class="card-gerenciar">
+      <img src="uploads/smartphone.jpg" alt="Smartphone X" />
+      <h3>Smartphone X</h3>
+      <p><strong>Descrição:</strong> Celular moderno com ótima câmera</p>
+      <p><strong>Avaliação:</strong> ★★★★★</p>
+      <p><strong>Preço:</strong> R$ 1.999,90</p>
+      <p><strong>Categoria:</strong> Eletrônicos</p>
+
+      <form class="form-editar">
+        <input type="text" value="Smartphone X" required />
+        <input type="text" value="Celular moderno com ótima câmera" required />
+        <select required>
+          <option>★☆☆☆☆</option>
+          <option>★★☆☆☆</option>
+          <option>★★★☆☆</option>
+          <option>★★★★☆</option>
+          <option selected>★★★★★</option>
+        </select>
+        <input type="number" value="1999.90" step="0.01" required />
+        <select required>
+          <option selected>Eletrônicos</option>
+          <option>Roupas</option>
+          <option>Livros</option>
+        </select>
+        <button type="submit" class="btn-editar">Atualizar</button>
+      </form>
+
+      <form onsubmit="return confirm('Excluir este produto?')">
+        <button type="submit" class="btn-remover">Excluir</button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>

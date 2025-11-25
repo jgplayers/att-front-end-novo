@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Admin</title>
+  <link rel="stylesheet" href="css/cadastro_admin.css">
+</head>
+<body>
+  <div class="cadastro-container">
+    <h1>🛠️ Cadastro de Administrador</h1>
+
+    <!-- Mensagem de feedback (sucesso/erro) -->
+    <p class="mensagem">⚠️ Preencha todos os campos!</p>
+
+    <form method="POST" class="cadastro-form">
+      <label for="usuario">Usuário:</label>
+      <input type="text" id="usuario" name="usuario" required>
+
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" name="senha" required>
+
+      <button type="submit">Cadastrar</button>
+    </form>
+  </div>
+</body>
+</html>

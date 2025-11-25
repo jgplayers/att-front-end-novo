@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Click & Compre</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="uploads/LogoFAV.png" type="image/png" />
+</head>
+<body>
+  <header class="topo">
+    <div class="logo">
+      <a href="index.html" class="logo-link">
+        <h1>🛍️ Click & Compre</h1>
+      </a>
+    </div>
+
+    <div class="topo-botoes">
+      <a href="index.html" class="btn-topo">🏠 Home</a>
+      <a href="carrinho.html" class="btn-topo carrinho-btn">
+        🛒 Carrinho <span class="carrinho-contador">2</span>
+      </a>
+      <!-- Exemplo com usuário logado -->
+      <span class="boas-vindas">👋 Olá, Christian</span>
+      <a href="logout.html" class="btn-topo">Sair</a>
+      <!-- Exemplo com usuário não logado:
+      <a href="login.html" class="btn-topo">🔐 Entrar</a>
+      <a href="cadastro.html" class="btn-topo">Cadastrar</a>
+      -->
+      <a href="login_admin.html" class="btn-topo btn-admin">⚙️ Admin</a>
+    </div>
+  </header>
+
+  <div class="mensagem-boas-vindas">
+    <h2>🎉 Bem-vindo à Click & Compre!</h2>
+    <p>Explore nossas categorias e encontre os melhores produtos com os melhores preços. Boas compras!</p>
+  </div>
+
+  <section class="filtros">
+    <form method="GET" class="filtro-form">
+      <div class="filtro-linha">
+        <div class="dropdown-categorias">
+          <button type="button" class="btn-categorias" onclick="toggleCategorias()">📂 Categorias</button>
+          <ul id="lista-categorias" class="lista-categorias">
+            <li><a href="#">Todas as categorias</a></li>
+            <li><a href="#">Eletrônicos</a></li>
+            <li><a href="#">Roupas</a></li>
+            <li><a href="#">Livros</a></li>
+          </ul>
+        </div>
+
+        <input type="text" name="search" placeholder="Buscar produtos..." />
+        <button type="submit">Buscar</button>
+      </div>
+    </form>
+  </section>
+
+  <main>
+    <section class="bloco-categoria">
+      <h2 class="titulo-categoria">Eletrônicos</h2>
+      <div class="produtos-grid">
+        <div class="card-produto">
+          <a href="detalhes.html" class="card-produto-link">
+            <img src="uploads/smartphone.jpg" alt="Smartphone X" />
+            <h3>Smartphone X</h3>
+          </a>
+          <p class="descricao">Celular moderno com ótima câmera</p>
+          <div class="avaliacao">★★★★★</div>
+          <p class="preco">R$ 1.999,90</p>
+          <form method="GET" action="index.html" class="form-comprar">
+            <input type="hidden" name="add_carrinho" value="1" />
+            <div class="qtd-box">
+              <button type="button" onclick="alterarQtd('qtd_1', -1)">−</button>
+              <input type="number" id="qtd_1" name="quantidade" value="1" min="1" />
+              <button type="button" onclick="alterarQtd('qtd_1', 1)">+</button>
+            </div>
+            <button type="submit" class="btn-comprar">Comprar</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="bloco-categoria">
+      <h2 class="titulo-categoria">Roupas</h2>
+      <div class="produtos-grid">
+        <div class="card-produto">
+          <a href="detalhes.html" class="card-produto-link">
+            <img src="uploads/camisa.jpg" alt="Camisa Polo" />
+            <h3>Camisa Polo</h3>
+          </a>
+          <p class="descricao">Camisa confortável e estilosa</p>
+          <div class="avaliacao">★★★★☆</div>
+          <p class="preco">R$ 89,90</p>
+          <button class="btn-comprar" onclick="alertaLogin()">Comprar</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="modal-login" class="modal-overlay" onclick="fecharModal(event)">
+    <div class="modal-box">
+      <span class="modal-close" onclick="fecharModal()">×</span>
+      <h3>⚠️ Você precisa estar logado</h3>
+      <p>Para comprar produtos, faça login ou crie uma conta.</p>
+      <div class="modal-actions">
+        <a href="login.html" class="btn-modal">Fazer login</a>
+        <a href="cadastro.html" class="btn-modal">Cadastrar</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleCategorias() {
+      const lista = document.getElementById("lista-categorias");
+      lista.style.display = lista.style.display === "block" ? "none" : "block";
+    }
+
+    document.addEventListener("click", function (e) {
+      const btn = document.querySelector(".btn-categorias");
+      const lista = document.getElementById("lista-categorias");
+      if (!btn.contains(e.target) && !lista.contains(e.target)) {
+        lista.style.display = "none";
+      }
+    });
+
+    function alertaLogin() {
+      document.getElementById("modal-login").style.display = "flex";
+    }
+
+    function fecharModal(event) {
+      const modal = document.getElementById("modal-login");
+      if (!event || event.target === modal || event.target.classList.contains("modal-close")) {
+        modal.style.display = "none";
+      }
+    }
+
+    function alterarQtd(id, delta) {
+      const input = document.getElementById(id);
+      let valor = parseInt(input.value) || 1;
+      valor += delta;
+      if (valor < 1) valor = 1;
+      input.value = valor;
+    }
+  </script>
+</body>
+</html>

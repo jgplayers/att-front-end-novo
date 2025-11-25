@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Produto Exemplo | Click & Compre</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/detalhes.css" />
+  <link rel="icon" href="uploads/LogoFAV.png" type="image/png" />
+</head>
+<body>
+  <header class="topo">
+    <div class="logo">
+      <a href="index.php" class="logo-link">
+        <h1>🛍️ Click & Compre</h1>
+      </a>
+    </div>
+
+    <div class="topo-botoes">
+      <a href="index.php" class="btn-topo">🏠 Home</a>
+      <a href="carrinho.php" class="btn-topo">🛒 Carrinho</a>
+      <!-- Exemplo com usuário logado -->
+      <span class="boas-vindas">👋 Olá, Christian</span>
+      <a href="logout.php" class="btn-topo">Sair</a>
+      <!-- Exemplo com usuário não logado:
+      <a href="login.php" class="btn-topo">🔐 Entrar</a>
+      <a href="cadastro.php" class="btn-topo">Cadastrar</a>
+      -->
+    </div>
+  </header>
+
+  <main class="detalhes-container">
+    <div class="detalhes-box">
+      <img src="uploads/produto_exemplo.jpg" alt="Produto Exemplo" class="detalhes-imagem" />
+      <div class="detalhes-info">
+        <h2>Produto Exemplo</h2>
+        <p class="detalhes-descricao">Descrição detalhada do produto exemplo.</p>
+        <p class="detalhes-avaliacao">★★★★☆</p>
+        <p class="detalhes-preco">R$ 199,90</p>
+
+        <!-- Exemplo com usuário logado -->
+        <form method="GET" action="index.php" class="form-comprar">
+          <input type="hidden" name="add_carrinho" value="1" />
+          <div class="qtd-box">
+            <button type="button" onclick="alterarQtd('qtd_1', -1)">−</button>
+            <input type="number" id="qtd_1" name="quantidade" value="1" min="1" />
+            <button type="button" onclick="alterarQtd('qtd_1', 1)">+</button>
+          </div>
+          <button type="submit" class="btn-comprar">Adicionar ao carrinho</button>
+        </form>
+
+        <!-- Exemplo com usuário não logado:
+        <button class="btn-comprar" onclick="alert('Faça login para comprar')">Comprar</button>
+        -->
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function alterarQtd(id, delta) {
+      const input = document.getElementById(id);
+      let valor = parseInt(input.value) || 1;
+      valor += delta;
+      if (valor < 1) valor = 1;
+      input.value = valor;
+    }
+  </script>
+</body>
+</html>

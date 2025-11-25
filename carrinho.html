@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Seu Carrinho</title>
+  <link rel="stylesheet" href="css/carrinho.css" />
+</head>
+<body>
+  <header>
+    <h1 style="text-align:center;">🛒 Seu Carrinho</h1>
+    <p style="text-align:center; margin-bottom:30px;">
+      <a href="index.html">← Continuar comprando</a>
+    </p>
+  </header>
+
+  <main class="carrinho-container">
+    <!-- Exemplo com itens no carrinho -->
+    <div class="carrinho-grid">
+      <div class="item-carrinho">
+        <img src="uploads/produto1.jpg" alt="Produto Exemplo" />
+        <h3>Produto Exemplo</h3>
+        <p>Descrição breve do produto.</p>
+        <div class="avaliacao">★★★★☆</div>
+        <p>Preço unitário: R$ 99,90</p>
+
+        <!-- Controle de quantidade -->
+        <form method="POST" action="carrinho.html" class="form-qtd">
+          <input type="hidden" name="produtoId" value="1" />
+          <div class="qtd-box">
+            <button type="submit" name="acao" value="diminuir">−</button>
+            <input type="text" value="2" readonly />
+            <button type="submit" name="acao" value="aumentar">+</button>
+          </div>
+        </form>
+
+        <p>Subtotal: R$ 199,80</p>
+        <a href="?remover=1" class="btn-remover">Remover</a>
+      </div>
+
+      <div class="item-carrinho">
+        <img src="uploads/produto2.jpg" alt="Produto Exemplo 2" />
+        <h3>Produto Exemplo 2</h3>
+        <p>Descrição breve do produto.</p>
+        <div class="avaliacao">★★★☆☆</div>
+        <p>Preço unitário: R$ 59,90</p>
+
+        <form method="POST" action="carrinho.html" class="form-qtd">
+          <input type="hidden" name="produtoId" value="2" />
+          <div class="qtd-box">
+            <button type="submit" name="acao" value="diminuir">−</button>
+            <input type="text" value="1" readonly />
+            <button type="submit" name="acao" value="aumentar">+</button>
+          </div>
+        </form>
+
+        <p>Subtotal: R$ 59,90</p>
+        <a href="?remover=2" class="btn-remover">Remover</a>
+      </div>
+    </div>
+
+    <!-- Total geral -->
+    <div class="total-geral">
+      <h3 style="text-align:center; margin-top:30px;">
+        💰 Total geral: R$ 259,70
+      </h3>
+      <a href="finalizar.html" class="btn-finalizar">Finalizar Compra</a>
+    </div>
+
+    <!-- Exemplo de carrinho vazio -->
+    <!-- <p style="text-align:center;">Seu carrinho está vazio.</p> -->
+  </main>
+</body>
+</html>
